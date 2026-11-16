@@ -1,0 +1,52 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:AppHotel.Models"
+             xmlns:vm="clr-namespace:AppHotel.ViewModels"
+             x:Class="AppHotel.Views.SuitesPage"
+             x:DataType="vm:EstadiaViewModel"
+             Title="Suítes">
+    <Grid RowDefinitions="Auto,*">
+        <Grid BackgroundColor="{StaticResource Marinho}">
+            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="16" Padding="20,10" MaximumWidthRequest="1160">
+                <Button Text="‹ Voltar" Clicked="Voltar" Style="{StaticResource BotaoCabecalho}" />
+                <Label Grid.Column="1" Text="App Hotel" TextColor="White" FontFamily="HotelSerif"
+                       FontSize="24" VerticalOptions="Center" />
+            </Grid>
+        </Grid>
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="18,22,18,28" Spacing="14" MaximumWidthRequest="740">
+                <VerticalStackLayout Spacing="3">
+                    <Label Text="Suítes" Style="{StaticResource Titulo}" SemanticProperties.HeadingLevel="Level1" />
+                    <Label Text="Tarifas por pessoa, a cada noite." TextColor="{StaticResource Secundario}" />
+                </VerticalStackLayout>
+                <VerticalStackLayout Spacing="12" BindableLayout.ItemsSource="{Binding Suites}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate x:DataType="models:Suite">
+                            <Border Style="{StaticResource CartaoPadrao}" Padding="16">
+                                <VerticalStackLayout Spacing="6">
+                                    <Label Text="{Binding Nome}" FontFamily="HotelSerif" FontSize="24"
+                                           SemanticProperties.HeadingLevel="Level2" />
+                                    <Label Text="{Binding Descricao}" TextColor="{StaticResource Secundario}" />
+                                    <Grid ColumnDefinitions="*,*,Auto" ColumnSpacing="10" Margin="0,4,0,0">
+                                        <VerticalStackLayout Spacing="2">
+                                            <Label Text="ADULTO" Style="{StaticResource Secao}" />
+                                            <Label Text="{Binding TarifaAdultoFormatada}" FontAttributes="Bold" />
+                                        </VerticalStackLayout>
+                                        <VerticalStackLayout Grid.Column="1" Spacing="2">
+                                            <Label Text="CRIANÇA" Style="{StaticResource Secao}" />
+                                            <Label Text="{Binding TarifaCriancaFormatada}" FontAttributes="Bold" />
+                                        </VerticalStackLayout>
+                                        <Button Grid.Column="2" Text="Escolher" CommandParameter="{Binding .}"
+                                                Clicked="Selecionar" VerticalOptions="Center"
+                                                SemanticProperties.Hint="{Binding Nome}" />
+                                    </Grid>
+                                </VerticalStackLayout>
+                            </Border>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

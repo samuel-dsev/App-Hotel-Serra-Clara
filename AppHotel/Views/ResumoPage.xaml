@@ -6,7 +6,7 @@
              x:DataType="models:ResumoEstadia"
              Title="Resumo da estadia">
     <Grid RowDefinitions="Auto,*">
-        <Grid BackgroundColor="{StaticResource Verde}">
+        <Grid BackgroundColor="{StaticResource Marinho}">
             <Grid ColumnDefinitions="Auto,*" ColumnSpacing="16" Padding="20,10" MaximumWidthRequest="1160">
                 <Button Text="‹ Voltar" Clicked="Voltar" Style="{StaticResource BotaoCabecalho}" />
                 <Label Grid.Column="1" Text="App Hotel" TextColor="White" FontFamily="HotelSerif"
@@ -18,11 +18,11 @@
             <VerticalStackLayout Padding="18,24,18,30" Spacing="16" MaximumWidthRequest="600">
                 <Label Text="Resumo da estadia" Style="{StaticResource Titulo}" SemanticProperties.HeadingLevel="Level1" />
                 <Border Style="{StaticResource CartaoPadrao}">
-                    <VerticalStackLayout Spacing="17">
+                    <VerticalStackLayout Spacing="12">
                         <Label Text="{Binding Suite.Nome}" FontFamily="HotelSerif" FontSize="29"
                                SemanticProperties.HeadingLevel="Level2" />
                         <BoxView HeightRequest="1" Color="{StaticResource Linha}" />
-                        <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" ColumnSpacing="14" RowSpacing="16">
+                        <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" ColumnSpacing="14" RowSpacing="12">
                             <VerticalStackLayout Spacing="5">
                                 <Label Text="CHECK-IN" Style="{StaticResource Secao}" />
                                 <Label Text="{Binding Entrada, StringFormat='{0:dd/MM/yyyy}'}" />
@@ -34,10 +34,14 @@
                             <VerticalStackLayout Grid.Row="1" Spacing="5">
                                 <Label Text="ADULTOS" Style="{StaticResource Secao}" />
                                 <Label Text="{Binding Adultos}" />
+                                <Label Text="{Binding Suite.TarifaAdultoFormatada, StringFormat='{0} por pessoa/noite'}"
+                                       FontSize="12" TextColor="{StaticResource Secundario}" />
                             </VerticalStackLayout>
                             <VerticalStackLayout Grid.Row="1" Grid.Column="1" Spacing="5">
                                 <Label Text="CRIANÇAS" Style="{StaticResource Secao}" />
                                 <Label Text="{Binding Criancas}" />
+                                <Label Text="{Binding Suite.TarifaCriancaFormatada, StringFormat='{0} por pessoa/noite'}"
+                                       FontSize="12" TextColor="{StaticResource Secundario}" />
                             </VerticalStackLayout>
                         </Grid>
                         <BoxView HeightRequest="1" Color="{StaticResource Linha}" />
@@ -47,14 +51,14 @@
                                 <Label Text="{Binding Duracao}" />
                             </VerticalStackLayout>
                             <VerticalStackLayout Grid.Column="1" Spacing="5">
-                                <Label Text="DIÁRIA DA SUÍTE" Style="{StaticResource Secao}" />
-                                <Label Text="{Binding Suite.DiariaFormatada}" />
+                                <Label Text="DIÁRIA DO GRUPO" Style="{StaticResource Secao}" />
+                                <Label Text="{Binding DiariaFormatada}" />
                             </VerticalStackLayout>
                         </Grid>
                     </VerticalStackLayout>
                 </Border>
 
-                <Border BackgroundColor="{StaticResource Verde}" StrokeThickness="0"
+                <Border BackgroundColor="{StaticResource Marinho}" StrokeThickness="0"
                         StrokeShape="RoundRectangle 20" Padding="22,16">
                     <VerticalStackLayout Spacing="4">
                         <Label Text="TOTAL ESTIMADO" Style="{StaticResource Secao}" TextColor="{StaticResource Areia}" />

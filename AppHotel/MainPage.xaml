@@ -8,11 +8,13 @@
              Title="Cálculo da diária">
 
     <Grid RowDefinitions="Auto,*">
-        <Grid BackgroundColor="{StaticResource Verde}">
-            <Grid ColumnDefinitions="*,Auto" Padding="20,10" MaximumWidthRequest="1160">
+        <Grid BackgroundColor="{StaticResource Marinho}">
+            <Grid ColumnDefinitions="*,Auto,Auto" ColumnSpacing="8" Padding="18,10" MaximumWidthRequest="1160">
                 <Label Text="App Hotel" TextColor="White" FontFamily="HotelSerif"
                        FontSize="24" VerticalOptions="Center" />
-                <Button Grid.Column="1" Text="Sobre" Style="{StaticResource BotaoCabecalho}"
+                <Button Grid.Column="1" Text="Suítes" Style="{StaticResource BotaoCabecalho}"
+                        Clicked="AbrirSuites" />
+                <Button Grid.Column="2" Text="Sobre" Style="{StaticResource BotaoCabecalho}"
                         Clicked="AbrirSobre" />
             </Grid>
         </Grid>
@@ -22,15 +24,15 @@
                   ColumnDefinitions="0,*" RowDefinitions="Auto,Auto" RowSpacing="18">
 
                 <Border x:Name="Capa" Grid.ColumnSpan="2" HeightRequest="236" StrokeThickness="0" VerticalOptions="Start"
-                        BackgroundColor="{StaticResource Verde}" StrokeShape="RoundRectangle 22">
+                        BackgroundColor="{StaticResource Marinho}" StrokeShape="RoundRectangle 22">
                     <Grid>
                         <Image Source="hotel_serra.jpg" Aspect="AspectFill"
                                SemanticProperties.Description="Hotel de madeira e pedra cercado pelas montanhas da Mantiqueira" />
                         <Grid>
                             <Grid.Background>
                                 <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                    <GradientStop Offset="0.15" Color="#000C211A" />
-                                    <GradientStop Offset="1" Color="#FA10271F" />
+                                    <GradientStop Offset="0.15" Color="#0017212C" />
+                                    <GradientStop Offset="1" Color="#F517212C" />
                                 </LinearGradientBrush>
                             </Grid.Background>
                         </Grid>
@@ -72,9 +74,9 @@
                             <Label Text="SUÍTE" Style="{StaticResource Secao}" SemanticProperties.HeadingLevel="Level2" />
                             <Picker Title="Selecione a acomodação" TitleColor="{StaticResource Secundario}"
                                     TextColor="{StaticResource Texto}" FontSize="15" MinimumHeightRequest="44"
-                                    ItemsSource="{Binding Suites}" ItemDisplayBinding="{Binding Opcao, x:DataType=models:Suite}"
+                                    ItemsSource="{Binding Suites}" ItemDisplayBinding="{Binding Nome, x:DataType=models:Suite}"
                                     SelectedItem="{Binding SuiteSelecionada, Mode=TwoWay}"
-                                    SemanticProperties.Hint="Valores por noite, por suíte" />
+                                    SemanticProperties.Hint="Consulte as tarifas por hóspede na tela Suítes" />
                         </VerticalStackLayout>
 
                         <VerticalStackLayout Spacing="7">
@@ -83,19 +85,23 @@
                             <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
                                 <VerticalStackLayout Spacing="3">
                                     <Label Text="Check-in" />
-                                    <DatePicker Format="dd/MM/yyyy" MinimumDate="{Binding DataMinima}"
+                                    <DatePicker Format="dd/MM/yyyy" MinimumDate="{Binding DataMinimaEntrada}"
+                                                MaximumDate="{Binding DataMaximaEntrada}"
                                                 Date="{Binding Entrada, Mode=TwoWay}"
                                                 TextColor="{StaticResource Texto}" FontSize="15" MinimumHeightRequest="44"
                                                 AutomationId="DataEntrada" SemanticProperties.Description="Data de check-in" />
                                 </VerticalStackLayout>
                                 <VerticalStackLayout Grid.Column="1" Spacing="3">
                                     <Label Text="Check-out" />
-                                    <DatePicker Format="dd/MM/yyyy" MinimumDate="{Binding DataMinima}"
+                                    <DatePicker Format="dd/MM/yyyy" MinimumDate="{Binding DataMinimaSaida}"
+                                                MaximumDate="{Binding DataMaximaSaida}"
                                                 Date="{Binding Saida, Mode=TwoWay}"
                                                 TextColor="{StaticResource Texto}" FontSize="15" MinimumHeightRequest="44"
                                                 AutomationId="DataSaida" SemanticProperties.Description="Data de check-out" />
                                 </VerticalStackLayout>
                             </Grid>
+                            <Label Text="{Binding DataMaximaEntrada, StringFormat='Check-in até {0:dd/MM}. A estadia pode durar até 6 meses.'}"
+                                   FontSize="12" TextColor="{StaticResource Secundario}" />
                         </VerticalStackLayout>
 
                         <Button Text="Calcular estadia" Clicked="CalcularEstadia" />

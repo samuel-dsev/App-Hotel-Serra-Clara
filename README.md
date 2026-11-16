@@ -1,6 +1,6 @@
 # App Hotel · Serra Clara
 
-Simulador de hospedagem desenvolvido por **Samuel** em **2026** para a Agenda 13 de Desenvolvimento de Sistemas II da ETEC. O layout adapta o App Hotel da aula a um hotel fictício na Serra da Mantiqueira.
+Simulador de hospedagem desenvolvido por **Samuel** em **2026** para as Agendas 13 e 14 de Desenvolvimento de Sistemas II da ETEC. O layout adapta o App Hotel da aula a um hotel fictício na Serra da Mantiqueira.
 
 ## Como executar
 
@@ -21,16 +21,19 @@ dotnet build AppHotel/AppHotel.csproj -t:Run -f net11.0-android -p:TargetFramewo
 ## Como usar
 
 1. Ajuste a quantidade de adultos e crianças usando os controles **Stepper**.
-2. Escolha uma suíte no **Picker** e selecione o check-in e o check-out nos **DatePicker**.
-3. Use **Calcular estadia** para conferir os hóspedes, as datas, as diárias e o total. O valor é a tarifa da suíte multiplicada pelo número de noites.
-4. Use **Editar estadia** para voltar ao formulário com as escolhas preenchidas. A tela **Sobre** fica no cabeçalho do formulário.
+2. Escolha uma suíte no **Picker** ou abra **Suítes** para comparar as tarifas e escolher uma acomodação.
+3. Selecione o check-in entre hoje e um mês à frente. O check-out vai de um dia a seis meses após o check-in. Se uma alteração no check-in deixar o check-out fora desse intervalo, ele será ajustado para o limite mais próximo.
+4. Use **Calcular estadia** para conferir os hóspedes, as tarifas e o total. A diária do grupo soma as tarifas de adultos e crianças conforme a quantidade de cada. O total é a diária do grupo multiplicada pelo número de noites.
+5. Use **Editar estadia** para voltar ao formulário com as escolhas preenchidas. A tela **Sobre** fica no cabeçalho do formulário.
 
-O XAML usa `BindingContext` para vincular os controles a `EstadiaViewModel`. A tela de resumo recebe um objeto `ResumoEstadia` como seu próprio contexto.
+O XAML usa `BindingContext` para vincular os controles a `EstadiaViewModel`. O formulário e o catálogo usam o mesmo array de objetos `Suite`, que encapsulam as tarifas e o cálculo da diária. A tela de resumo recebe o objeto `ResumoEstadia` como seu próprio contexto.
 
 ## Referências
 
 - [Código de referência da Agenda 13](https://github.com/tiagotas/MauiAppHotel/tree/f4651e5172dedfceec4630538ffe4bf340bce128)
 - [Aula App Hotel — Parte 1](https://www.youtube.com/watch?v=DvFpB63U8TI)
+- [Código de referência da Agenda 14](https://github.com/tiagotas/MauiAppHotel/tree/4e655cb68610572865b83fc420655601b1a5f1ff)
+- [Aula App Hotel — Parte 2](https://www.youtube.com/watch?v=XJSnY5bBm9s)
 - [Data Binding com MVVM e XAML — Microsoft Learn](https://learn.microsoft.com/en-us/shows/dotnet-maui-for-beginners/dotnet-maui-data-binding-with-mvvm-xaml-5-of-8-dotnet-maui-for-beginners)
 - A fonte DM Serif Text está sob a [SIL Open Font License](AppHotel/OFL-DMSerifText.txt).
 

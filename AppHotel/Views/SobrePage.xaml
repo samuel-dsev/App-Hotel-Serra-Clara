@@ -4,7 +4,7 @@
              x:Class="AppHotel.Views.SobrePage"
              Title="Sobre">
     <Grid RowDefinitions="Auto,*">
-        <Grid BackgroundColor="{StaticResource Verde}">
+        <Grid BackgroundColor="{StaticResource Marinho}">
             <Grid ColumnDefinitions="Auto,*" ColumnSpacing="16" Padding="20,10" MaximumWidthRequest="1160">
                 <Button Text="‹ Voltar" Clicked="Voltar" Style="{StaticResource BotaoCabecalho}" />
                 <Label Grid.Column="1" Text="App Hotel" TextColor="White" FontFamily="HotelSerif"
@@ -43,7 +43,7 @@
                         <BoxView HeightRequest="1" Color="{StaticResource Linha}" />
                         <VerticalStackLayout Spacing="5">
                             <Label Text="ATIVIDADE ACADÊMICA" Style="{StaticResource Secao}" />
-                            <Label Text="ETEC · Desenvolvimento de Sistemas II · Agenda 13" />
+                            <Label Text="ETEC · Desenvolvimento de Sistemas II · Agendas 13 e 14" />
                             <Label Text="Desenvolvido em C# e XAML com .NET MAUI." TextColor="{StaticResource Secundario}" />
                         </VerticalStackLayout>
                     </VerticalStackLayout>

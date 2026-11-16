@@ -28,7 +28,7 @@ public partial class MainPage : ContentPage
         Painel.ColumnSpacing = layoutAmplo ? 22 : 0;
         Grid.SetColumnSpan(Capa, layoutAmplo ? 1 : 2);
         Grid.SetRow(Formulario, layoutAmplo ? 0 : 1);
-        Capa.HeightRequest = layoutAmplo ? 510 : 236;
+        Capa.HeightRequest = layoutAmplo ? 532 : 236;
         Marca.Padding = layoutAmplo ? new Thickness(30, 26) : new Thickness(24, 20);
         NomeHotel.FontSize = layoutAmplo ? 40 : 34;
         TituloPagina.FontSize = layoutAmplo ? 38 : 31;
@@ -48,6 +48,9 @@ public partial class MainPage : ContentPage
 
     private async void AbrirSobre(object? sender, EventArgs e) =>
         await AbrirPagina((Button)sender!, new SobrePage());
+
+    private async void AbrirSuites(object? sender, EventArgs e) =>
+        await AbrirPagina((Button)sender!, new SuitesPage(_estadia));
 
     private async Task AbrirPagina(Button botao, Page pagina)
     {

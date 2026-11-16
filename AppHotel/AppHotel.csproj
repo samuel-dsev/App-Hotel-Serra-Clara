@@ -11,8 +11,8 @@
         <Nullable>enable</Nullable>
         <ApplicationTitle>App Hotel</ApplicationTitle>
         <ApplicationId>br.samueldsev.apphotel</ApplicationId>
-        <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
-        <ApplicationVersion>1</ApplicationVersion>
+        <ApplicationDisplayVersion>1.1</ApplicationDisplayVersion>
+        <ApplicationVersion>2</ApplicationVersion>
         <WindowsPackageType>None</WindowsPackageType>
         <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">24.0</SupportedOSPlatformVersion>
         <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.19041.0</SupportedOSPlatformVersion>
@@ -20,7 +20,7 @@
     </PropertyGroup>
     <ItemGroup>
         <MauiIcon Include="Resources\AppIcon\appicon.png" Color="#173B32" />
-        <MauiSplashScreen Include="Resources\Splash\serra_splash.png" Color="#173B32" BaseSize="128,128" />
+        <MauiSplashScreen Include="Resources\Splash\serra_splash.png" Color="#263747" BaseSize="128,128" />
         <MauiImage Include="Resources\Images\*" />
         <MauiFont Include="Resources\Fonts\*.ttf" />
     </ItemGroup>
