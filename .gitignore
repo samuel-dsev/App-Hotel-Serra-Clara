@@ -1,0 +1,16 @@
+
+# Saída de compilação
+[Bb]in/
+[Oo]bj/
+*.apk
+*.aab
+
+# Arquivos locais do Visual Studio
+.vs/
+*.user
+*.suo
+*.userprefs
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db

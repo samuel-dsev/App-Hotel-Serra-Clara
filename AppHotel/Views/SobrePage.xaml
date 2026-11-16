@@ -1,0 +1,54 @@
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppHotel.Views.SobrePage"
+             Title="Sobre">
+    <Grid RowDefinitions="Auto,*">
+        <Grid BackgroundColor="{StaticResource Verde}">
+            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="16" Padding="20,10" MaximumWidthRequest="1160">
+                <Button Text="‹ Voltar" Clicked="Voltar" Style="{StaticResource BotaoCabecalho}" />
+                <Label Grid.Column="1" Text="App Hotel" TextColor="White" FontFamily="HotelSerif"
+                       FontSize="24" VerticalOptions="Center" />
+            </Grid>
+        </Grid>
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="18,24,18,30" Spacing="16" MaximumWidthRequest="600">
+                <Label Text="Sobre" Style="{StaticResource Titulo}" SemanticProperties.HeadingLevel="Level1" />
+
+                <Border StrokeThickness="0" StrokeShape="RoundRectangle 22" HeightRequest="185">
+                    <Image Source="hotel_serra.jpg" Aspect="AspectFill"
+                           SemanticProperties.Description="Hotel Serra Clara e a paisagem da Mantiqueira" />
+                </Border>
+
+                <Border Style="{StaticResource CartaoPadrao}">
+                    <VerticalStackLayout Spacing="16">
+                        <VerticalStackLayout Spacing="6">
+                            <Label Text="Hotel Serra Clara" FontFamily="HotelSerif" FontSize="29"
+                                   SemanticProperties.HeadingLevel="Level2" />
+                            <Label Text="Simulador de hospedagem de um hotel fictício da Serra da Mantiqueira."
+                                   TextColor="{StaticResource Secundario}" />
+                        </VerticalStackLayout>
+                        <BoxView HeightRequest="1" Color="{StaticResource Linha}" />
+                        <Grid ColumnDefinitions="*,*" ColumnSpacing="14">
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="DESENVOLVEDOR" Style="{StaticResource Secao}" />
+                                <Label Text="Samuel" />
+                            </VerticalStackLayout>
+                            <VerticalStackLayout Grid.Column="1" Spacing="5">
+                                <Label Text="ANO" Style="{StaticResource Secao}" />
+                                <Label Text="2026" />
+                            </VerticalStackLayout>
+                        </Grid>
+                        <BoxView HeightRequest="1" Color="{StaticResource Linha}" />
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="ATIVIDADE ACADÊMICA" Style="{StaticResource Secao}" />
+                            <Label Text="ETEC · Desenvolvimento de Sistemas II · Agenda 13" />
+                            <Label Text="Desenvolvido em C# e XAML com .NET MAUI." TextColor="{StaticResource Secundario}" />
+                        </VerticalStackLayout>
+                    </VerticalStackLayout>
+                </Border>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

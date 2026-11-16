@@ -1,0 +1,107 @@
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:AppHotel.ViewModels"
+             xmlns:models="clr-namespace:AppHotel.Models"
+             x:Class="AppHotel.MainPage"
+             x:DataType="vm:EstadiaViewModel"
+             Title="Cálculo da diária">
+
+    <Grid RowDefinitions="Auto,*">
+        <Grid BackgroundColor="{StaticResource Verde}">
+            <Grid ColumnDefinitions="*,Auto" Padding="20,10" MaximumWidthRequest="1160">
+                <Label Text="App Hotel" TextColor="White" FontFamily="HotelSerif"
+                       FontSize="24" VerticalOptions="Center" />
+                <Button Grid.Column="1" Text="Sobre" Style="{StaticResource BotaoCabecalho}"
+                        Clicked="AbrirSobre" />
+            </Grid>
+        </Grid>
+
+        <ScrollView Grid.Row="1">
+            <Grid x:Name="Painel" Padding="18,22,18,28" MaximumWidthRequest="1160"
+                  ColumnDefinitions="0,*" RowDefinitions="Auto,Auto" RowSpacing="18">
+
+                <Border x:Name="Capa" Grid.ColumnSpan="2" HeightRequest="236" StrokeThickness="0" VerticalOptions="Start"
+                        BackgroundColor="{StaticResource Verde}" StrokeShape="RoundRectangle 22">
+                    <Grid>
+                        <Image Source="hotel_serra.jpg" Aspect="AspectFill"
+                               SemanticProperties.Description="Hotel de madeira e pedra cercado pelas montanhas da Mantiqueira" />
+                        <Grid>
+                            <Grid.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                    <GradientStop Offset="0.15" Color="#000C211A" />
+                                    <GradientStop Offset="1" Color="#FA10271F" />
+                                </LinearGradientBrush>
+                            </Grid.Background>
+                        </Grid>
+                        <VerticalStackLayout x:Name="Marca" Padding="24,20" Spacing="3" VerticalOptions="End">
+                            <Label Text="SERRA DA MANTIQUEIRA · SP" Style="{StaticResource Secao}"
+                                   TextColor="{StaticResource Areia}" />
+                            <Label x:Name="NomeHotel" Text="Hotel Serra Clara" FontFamily="HotelSerif" FontSize="34"
+                                   TextColor="White" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </Border>
+
+                <Border x:Name="Formulario" Grid.Row="1" Grid.Column="1" Style="{StaticResource CartaoPadrao}">
+                    <VerticalStackLayout Spacing="14">
+                        <Label x:Name="TituloPagina" Text="Calcule sua estadia" Style="{StaticResource Titulo}" FontSize="31"
+                               SemanticProperties.HeadingLevel="Level1" />
+
+                        <BoxView HeightRequest="1" Color="{StaticResource Linha}" />
+                        <VerticalStackLayout Spacing="4">
+                            <Label Text="HÓSPEDES" Style="{StaticResource Secao}" SemanticProperties.HeadingLevel="Level2" />
+                            <Grid ColumnDefinitions="*,36,Auto" RowDefinitions="Auto,Auto" ColumnSpacing="10">
+                                <Label Text="Adultos" VerticalOptions="Center" />
+                                <Label Grid.Column="1" Text="{Binding Adultos, StringFormat='{0:0}'}"
+                                       HorizontalTextAlignment="Center" VerticalOptions="Center" FontAttributes="Bold" />
+                                <Stepper Grid.Column="2" Minimum="1" Maximum="10" Increment="1"
+                                         Value="{Binding Adultos, Mode=TwoWay}" MinimumHeightRequest="44"
+                                         SemanticProperties.Description="Quantidade de adultos" />
+
+                                <Label Grid.Row="1" Text="Crianças" VerticalOptions="Center" />
+                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding Criancas, StringFormat='{0:0}'}"
+                                       HorizontalTextAlignment="Center" VerticalOptions="Center" FontAttributes="Bold" />
+                                <Stepper Grid.Row="1" Grid.Column="2" Minimum="0" Maximum="10" Increment="1"
+                                         Value="{Binding Criancas, Mode=TwoWay}" MinimumHeightRequest="44"
+                                         SemanticProperties.Description="Quantidade de crianças" />
+                            </Grid>
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Spacing="6">
+                            <Label Text="SUÍTE" Style="{StaticResource Secao}" SemanticProperties.HeadingLevel="Level2" />
+                            <Picker Title="Selecione a acomodação" TitleColor="{StaticResource Secundario}"
+                                    TextColor="{StaticResource Texto}" FontSize="15" MinimumHeightRequest="44"
+                                    ItemsSource="{Binding Suites}" ItemDisplayBinding="{Binding Opcao, x:DataType=models:Suite}"
+                                    SelectedItem="{Binding SuiteSelecionada, Mode=TwoWay}"
+                                    SemanticProperties.Hint="Valores por noite, por suíte" />
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Spacing="7">
+                            <Label Text="PERÍODO DA ESTADIA" Style="{StaticResource Secao}"
+                                   SemanticProperties.HeadingLevel="Level2" />
+                            <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                                <VerticalStackLayout Spacing="3">
+                                    <Label Text="Check-in" />
+                                    <DatePicker Format="dd/MM/yyyy" MinimumDate="{Binding DataMinima}"
+                                                Date="{Binding Entrada, Mode=TwoWay}"
+                                                TextColor="{StaticResource Texto}" FontSize="15" MinimumHeightRequest="44"
+                                                AutomationId="DataEntrada" SemanticProperties.Description="Data de check-in" />
+                                </VerticalStackLayout>
+                                <VerticalStackLayout Grid.Column="1" Spacing="3">
+                                    <Label Text="Check-out" />
+                                    <DatePicker Format="dd/MM/yyyy" MinimumDate="{Binding DataMinima}"
+                                                Date="{Binding Saida, Mode=TwoWay}"
+                                                TextColor="{StaticResource Texto}" FontSize="15" MinimumHeightRequest="44"
+                                                AutomationId="DataSaida" SemanticProperties.Description="Data de check-out" />
+                                </VerticalStackLayout>
+                            </Grid>
+                        </VerticalStackLayout>
+
+                        <Button Text="Calcular estadia" Clicked="CalcularEstadia" />
+                    </VerticalStackLayout>
+                </Border>
+            </Grid>
+        </ScrollView>
+    </Grid>
+</ContentPage>
